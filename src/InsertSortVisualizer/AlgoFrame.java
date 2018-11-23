@@ -34,8 +34,8 @@ public class AlgoFrame extends JFrame{
     public int getCanvasHeight(){return canvasHeight;}
 
     // TODO: 设置自己的数据
-    private Object data;
-    public void render(Object data){
+    private InsertSortData data;
+    public void render(InsertSortData data){
         this.data = data;
         repaint();
     }
@@ -62,6 +62,16 @@ public class AlgoFrame extends JFrame{
 
             // 具体绘制
             // TODO： 绘制自己的数据data
+            int w = canvasWidth/data.size();//每个矩形的宽度
+            for(int i=0;i<data.size();i++){
+                if(i<=data.sortedIndex){
+                    AlgoVisHelper.setColor(g2d,AlgoVisHelper.Red);//将已排序部分绘制成红色
+                }else
+                    AlgoVisHelper.setColor(g2d, AlgoVisHelper.Grey);//将未排序部分绘制成灰色
+                if( i == data.currIndex )
+                    AlgoVisHelper.setColor(g2d, AlgoVisHelper.LightBlue);//当前元素绘制成浅蓝色
+                AlgoVisHelper.fillRectangle(g2d, i * w, canvasHeight - data.get(i), w - 1, data.get(i));
+            }
         }
 
         @Override
