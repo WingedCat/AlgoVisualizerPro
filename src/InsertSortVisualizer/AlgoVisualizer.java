@@ -11,11 +11,11 @@ public class AlgoVisualizer {
     private final int DELAY = 40;//每次绘制暂停的时间
     private AlgoFrame frame;    // 视图
 
-    public AlgoVisualizer(int sceneWidth, int sceneHeight,int size,int randomBound){
+    public AlgoVisualizer(int sceneWidth, int sceneHeight,int size,int randomBound,InsertSortData.Type type){
 
         // 初始化数据
         // TODO: 初始化数据
-        data = new InsertSortData(size,randomBound);
+        data = new InsertSortData(size,randomBound,type);
         // 初始化视图
         EventQueue.invokeLater(() -> {
             frame = new AlgoFrame("插入排序演示", sceneWidth, sceneHeight);
@@ -62,6 +62,6 @@ public class AlgoVisualizer {
 
         // TODO: 根据需要设置其他参数，初始化visualizer
         //设置数组数据为50，最大上限就是设置为窗口的高度
-        AlgoVisualizer visualizer = new AlgoVisualizer(sceneWidth, sceneHeight,50,sceneHeight);
+        AlgoVisualizer visualizer = new AlgoVisualizer(sceneWidth, sceneHeight,50,sceneHeight,InsertSortData.Type.NearlyOrdered);
     }
 }

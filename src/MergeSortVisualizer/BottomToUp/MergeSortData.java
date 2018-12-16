@@ -1,35 +1,24 @@
-package InsertSortVisualizer;
+package MergeSortVisualizer.BottomToUp;
 
-import java.util.Arrays;
-
-public class InsertSortData {
+public class MergeSortData {
     public enum Type{//数据类型
         Default,//默认随机数据
         NearlyOrdered//近乎有序的数据
     }
 
-    private int[] numbers;//data
-    public int sortedIndex = -1;//已排序的边界
-    public int currIndex = -1;//当前比较的边界
-
+    public int[] numbers;//data
+    public int l,r;//递归处理的左右边界索引值
+    public int mergeIndex;
 
     /**
      * @param N {numbers数组的长度}
      * @param randomBound {生成的随机数的上限}
      */
-    public InsertSortData(int N, int randomBound,Type type){
+    public MergeSortData(int N, int randomBound){
         numbers = new int[N];
         for(int i=0;i<N;i++)
             numbers[i] = (int) (Math.random()*randomBound)+1;//往numbers数组中添加随机数
-        if(type == Type.NearlyOrdered){
-            Arrays.sort(numbers);//首先对数据进行排序
-            int swapTime = (int)(0.02*N);//打乱数字的个数
-            for(int i = 0 ; i < swapTime; i ++){//随机选择数据进行交换
-                int a = (int)(Math.random()*N);
-                int b = (int)(Math.random()*N);
-                swap(a, b);
-            }
-        }
+
     }
 
     public int size(){
